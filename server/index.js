@@ -5,6 +5,11 @@ const app = express();
 const mongoose = require('mongoose');
 const UserModel = require('./models/Users')
 
+// i tried to use POST before adding this line, didn't work
+// json parsing automatically
+app.use(express.json());
+
+
 // takes in string, represents cluster from mongodb
 mongoose.connect("mongodb+srv://cabmatthew:Password@cluster0.f47ibmr.mongodb.net/pedroDB?retryWrites=true&w=majority");
 
@@ -30,6 +35,30 @@ app.get("/getUsers", async (req, res) => {
         res.json(err);
     }
 });
+
+// post: input data
+
+app.post("/createUser", async (req, res) => {
+    try {
+        // data we want to insert into DB
+        // get it from the front end (form)
+        // get object (body) from front end, exists in req
+        // assume front end will send a body object
+
+        // data to be inserted into DB, retrieved from front end
+        const user = req.body
+        // insert to DB, pass data into the Model
+        const newUser = new UserModel(user)
+        // save the data, using await
+        await newUser.save();
+
+        // send it back, but won't really be used
+        res.json(user);
+    } catch (err) {
+        res.json(err);
+    }
+});
+
 
 // tell api to start
 // port number, callback function runs when server starts running
