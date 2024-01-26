@@ -5,9 +5,12 @@ const app = express();
 const mongoose = require('mongoose');
 const UserModel = require('./models/Users')
 
+const cors = require('cors');
+
 // i tried to use POST before adding this line, didn't work
 // json parsing automatically
 app.use(express.json());
+app.use(cors());
 
 
 // takes in string, represents cluster from mongodb
