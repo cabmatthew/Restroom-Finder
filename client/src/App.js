@@ -10,6 +10,11 @@ function App() {
   // [list name, function used to alter the list] 
   const [listOfUsers, setListOfUsers] = useState([]);
 
+  // states to be populated
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(0);
+  const [username, setUsername] = useState("");
+
   // when someone goes to URL, want to automatically 
   // make API call to populate the state (listOfUsers)
 
@@ -30,6 +35,33 @@ function App() {
   // pass a list, empty array, what is this?
   }, [])
 
+  const createUser = () => {
+    // axios post request, when button is clicked
+    // send info thru the request, will use states to hold the data
+    Axios.post("http://localhost:3001/createUser", {
+      // name: name, 
+      // age: age, 
+      // username: username,
+      // ABOVE CAN BE SHORTENED only if object equal to variable with same name
+
+      // passing the states
+      name,
+      age,
+      username,
+    }).then((response) => {
+      // updating the page's listOfUsers to have newest person
+
+      // array to be set to whatever's in it, plus the object
+      setListOfUsers([...listOfUsers, 
+        {
+          name,
+          age,
+          username,
+        }])
+    });
+  };
+
+
   return (
     <div className="App">
       <div className="usersDisplay">
@@ -47,6 +79,30 @@ function App() {
             </div>
           );
         })}
+      </div>
+
+
+      {/* inputs for user, sends to backend */}
+      <div className="myForm">
+        <input 
+          type="text" 
+          placeholder="Name..." 
+          onChange={(event) => {
+            setName(event.target.value)}} 
+        />
+        <input 
+          type="number" 
+          placeholder="Age..." 
+          onChange={(event) => {
+            setAge(event.target.value)}} 
+        />
+        <input 
+          type="text" 
+          placeholder="Username..." 
+          onChange={(event) => {
+            setUsername(event.target.value)}} 
+        />
+        <button onClick={createUser}>Create User</button>
       </div>
     </div>
   );
