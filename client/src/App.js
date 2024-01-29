@@ -40,7 +40,7 @@ function App() {
         {/* react mapping, returns html */}
         {listOfUsers.map((user) => {
           return (
-            <div>
+            <div className="person">
               <h1>Name: {user.name}</h1>
               <h1>Age: {user.age}</h1>
               <h1>Username: {user.username}</h1>

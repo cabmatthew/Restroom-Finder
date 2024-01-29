@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.person {
+  outline-style: solid;
+}
+
+.logo {
+  margin-left: 10px !important;
+  width: 50px;
+  border-radius: 10px;
+}
+
+.name {
+  font-size: 25px !important;
+  margin-left: 10px !important;
+}
+
+.leaflet-container {
+  height: 50vh;
+  width: 70vw;
+  margin: 20px auto 20px;
+}
