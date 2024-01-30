@@ -33,7 +33,7 @@ function App() {
     });
 
   // pass a list, empty array, what is this?
-  }, [])
+  }, []);
 
   const createUser = () => {
     // axios post request, when button is clicked

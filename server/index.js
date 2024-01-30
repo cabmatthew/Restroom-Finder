@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const UserModel = require('./models/Users')
+const CoordinateModel = require('./models/Coordinates');
 
 const cors = require('cors');
 
@@ -38,6 +39,29 @@ app.get("/getUsers", async (req, res) => {
         res.json(err);
     }
 });
+
+
+app.get("/getCoordinates", async (req, res) => {
+    try {
+        // get all users as a list from the MongoDB collection
+        // going to use model we created to tell it to find the data requested
+        
+        // just the find function to get all the entries
+        // empty object -> returns all data in the collection
+        // Use async/await to wait for the result of UserModel.find()
+        const result = await CoordinateModel.find({});
+
+        // Send the result as JSON
+        res.json(result);
+    } catch (err) {
+        // If there was an error, send the error as JSON
+        res.json(err);
+    }
+});
+
+
+
+
 
 // post: input data
 
