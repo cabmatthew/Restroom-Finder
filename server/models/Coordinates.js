@@ -4,12 +4,20 @@ const mongoose = require("mongoose");
 const CoordinateSchema = new mongoose.Schema({
     latitude: {
         type: Number,
+        enum: ["double"],
         required: true,
     },
     longitude: {
         type: Number,
+        enum: ["double"],
         required: true,
     },
+    description: {
+        type: String,
+    },
+    access: {
+        type: String,
+    }
 });
 
 // creating model out of schema

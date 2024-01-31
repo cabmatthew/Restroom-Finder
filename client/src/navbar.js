@@ -11,7 +11,7 @@ export default function MyNavbar() {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                <Navbar.Brand className="name" href="#">My Map</Navbar.Brand>
+                <Navbar.Brand className="name" href="#">Toilet Tracker</Navbar.Brand>
                 {/* <Nav className="mr-auto">
                     <Nav.Link href="#">Home</Nav.Link>
                     <Nav.Link href="#">About</Nav.Link>
