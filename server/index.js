@@ -59,6 +59,18 @@ app.get("/getCoordinates", async (req, res) => {
     }
 });
 
+app.post("/createCoordinate", async (req, res) => {
+    try {
+        const coord = req.body
+        const newCoord = new CoordinateModel(coord)
+        await newCoord.save();
+
+        res.json(coord);
+
+    } catch (err) {
+        res.json(err);
+    }
+})
 
 
 
